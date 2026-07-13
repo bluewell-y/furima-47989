@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: "ニックネーム"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認）"
+        last_name: "お名前(全角)の名字"
+        first_name: "お名前(全角)の名前"
+        last_name_kana: "お名前カナ(全角)の名字"
+        first_name_kana: "お名前カナ(全角)の名前"
+        birthday: "生年月日"
