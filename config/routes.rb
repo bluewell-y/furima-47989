@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   
   root to: "items#index"
+
+  resources :items, only: [:new, :create]
+  
 end
