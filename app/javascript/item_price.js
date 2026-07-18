@@ -1,5 +1,5 @@
 // 画面が読み込まれたら実行されるようにする
-window.addEventListener('turbo:load', () => {
+const price = () => {
   // 金額を入力するフォームの要素を取得
   const priceInput = document.getElementById("item-price");
   
@@ -24,4 +24,9 @@ window.addEventListener('turbo:load', () => {
     addTaxDom.innerHTML = taxPrice;
     profitDom.innerHTML = profitPrice;
   });
-});
+};
+
+// 通常の画面遷移やリロード時に動かす
+window.addEventListener('turbo:load', price);
+// バリデーションエラーなどで render メソッドが呼ばれた際にも動かす
+window.addEventListener('turbo:render', price);
