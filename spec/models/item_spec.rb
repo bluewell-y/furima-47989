@@ -67,6 +67,24 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('価格を入力してください')
       end
 
+      it '価格が299円以下では保存できないこと' do
+        @item.price = 299
+        @item.valid?
+        expect(@item.errors.full_messages).to include('価格は300以上の値にしてください')
+      end
+
+      it '価格が10,000,000円以上では保存できないこと' do
+        @item.price = 10_000_000
+        @item.valid?
+        expect(@item.errors.full_messages).to include('価格は9,999,999以下の値にしてください')
+      end
+
+      it '価格が半角数字でなければ保存できないこと' do
+        @item.price = '３００' # 全角数字
+        @item.valid?
+        expect(@item.errors.full_messages).to include('価格は数値で入力してください')
+      end
+
       it 'userが紐付いていないと保存できないこと' do
         @item.user = nil
         @item.valid?
