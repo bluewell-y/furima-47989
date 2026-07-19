@@ -127,6 +127,52 @@
       新規投稿商品
     </div>
     <ul class='item-lists'>
+      <% if @items.present? %>
+        <% @items.each do |item| %>
+          <li class='list'>
+            <%= link_to "#" do %>
+              <div class='item-img-content'>
+                <%# 画像の表示（Active Storageから取得） %>
+                <%= image_tag item.image, class: "item-img" if item.image.attached? %>
+              </div>
+              <div class='item-info'>
+                <%# 商品名の表示 %>
+                <h3 class='item-name'>
+                  <%= item.name %>
+                </h3>
+                <div class='item-price'>
+                  <%# 価格と配送料の負担の表示 %>
+                  <span><%= item.price %>円<br><%= item.shipping_fee_status.name %></span>
+                  <div class='star-btn'>
+                    <%= image_tag "star.png", class:"star-icon" %>
+                    <span class='star-count'>0</span>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      <% else %>
+        <%# ■商品が【ない】場合の処理（最初からあるダミーのHTMLを残す） %>
+        <li class='list'>
+          <%= link_to '#' do %>
+            <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
+            <div class='item-info'>
+              <h3 class='item-name'>
+                商品を出品してね！
+              </h3>
+              <div class='item-price'>
+                <span>99999999円<br>(税込み)</span>
+                <div class='star-btn'>
+                  <%= image_tag "star.png", class:"star-icon" %>
+                  <span class='star-count'>0</span>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
 
       <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
       <li class='list'>
@@ -161,19 +207,19 @@
       <%# 商品がある場合は表示されないようにしましょう %>
       <li class='list'>
         <%= link_to '#' do %>
-        <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
-        <div class='item-info'>
-          <h3 class='item-name'>
-            商品を出品してね！
-          </h3>
-          <div class='item-price'>
-            <span>99999999円<br>(税込み)</span>
-            <div class='star-btn'>
-              <%= image_tag "star.png", class:"star-icon" %>
-              <span class='star-count'>0</span>
+          <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
+          <div class='item-info'>
+            <h3 class='item-name'>
+              商品を出品してね！
+            </h3>
+            <div class='item-price'>
+              <span>99999999円<br>(税込み)</span>
+              <div class='star-btn'>
+                <%= image_tag "star.png", class:"star-icon" %>
+                <span class='star-count'>0</span>
+              </div>
             </div>
           </div>
-        </div>
         <% end %>
       </li>
       <%# //商品がある場合は表示されないようにしましょう %>
