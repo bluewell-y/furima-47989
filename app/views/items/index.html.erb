@@ -134,6 +134,12 @@
               <div class='item-img-content'>
                 <%# 画像の表示（Active Storageから取得） %>
                 <%= image_tag item.image, class: "item-img" if item.image.attached? %>
+                <%# 売却済みの商品に「Sold Out」の表示 %>
+                <% if false %>
+                  <div class='sold-out'>
+                    <span>Sold Out!!</span>
+                  </div>
+                <% end %>
               </div>
               <div class='item-info'>
                 <%# 商品名の表示 %>
