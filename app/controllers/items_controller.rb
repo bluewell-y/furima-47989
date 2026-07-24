@@ -29,6 +29,16 @@ class ItemsController < ApplicationController
   def edit
   end
 
+  def update
+    if @item.update(item_params)
+      # 更新成功時は商品詳細表示ページへ遷移
+      redirect_to @item
+    else
+      # 更新失敗時は編集画面を再描画（エラーメッセージを表示）
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def item_params
