@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
   # ログインしていないユーザーが、出品・編集・更新などのログイン必須ページにアクセスした際、自動的にログイン画面へリダイレクトする
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   # show, edit, updateアクションが実行される前に、リクエストされたIDの商品情報をDBから取得して @item に代入する
-  before_action :set_item, only: [:show, :edit, :update]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
   # ログイン中のユーザーが出品者本人でない場合、商品の編集・更新ページへのアクセスを拒否してトップページへリダイレクトする
-  before_action :contributor_confirmation, only: [:edit, :update]
+  before_action :contributor_confirmation, only: [:edit, :update, :destroy]
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -37,6 +37,11 @@ class ItemsController < ApplicationController
       # 更新失敗時は編集画面を再描画（エラーメッセージを表示）
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @item.destroy
+    redirect_to root_path
   end
 
   private
