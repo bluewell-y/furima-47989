@@ -9,10 +9,11 @@
     <div class="item-img-content">
       <%= image_tag @item.image, class: "item-box-img" if @item.image.attached? %>
       <%# 商品が売れている場合は、sold outを表示 %>
-      <div class="sold-out">
-        <span>Sold Out!!</span>
-      </div>
-      <%# //商品が売れている場合は、sold outを表示 %>
+      <% if @item.order.present? %>
+        <div class="sold-out">
+          <span>Sold Out!!</span>
+        </div>
+      <% end %>
     </div>
     <div class="item-price-box">
       <span class="item-price">
@@ -31,8 +32,7 @@
         <%= link_to "削除", item_path(@item), data: {turbo_method: :delete}, class:"item-destroy" %>
       <% else %>
         <%# ログイン状態且つ出品者以外のユーザーの場合 %>
-        <%= link_to "購入画面に進む", "#" , data: { turbo: false }, class:"item-red-btn"%>
-        <%# //ログイン状態且つ出品者以外のユーザーの場合 %>
+        <%= link_to "購入画面に進む", item_orders_path(@item), data: { turbo: false }, class:"item-red-btn"%>
       <% end %>
     <% end %>
  
