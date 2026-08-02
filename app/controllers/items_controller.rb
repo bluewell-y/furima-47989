@@ -25,9 +25,7 @@ class ItemsController < ApplicationController
 
   def edit
     # 自身が出品していない、または売却済みの場合はトップページへ
-    return unless current_user.id != @item.user_id || @item.order.present?
-
-    redirect_to root_path
+    redirect_to root_path if @item.order.present?
   end
 
   def update
