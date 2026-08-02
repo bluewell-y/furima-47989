@@ -35,7 +35,10 @@ ja:
         building: "建物名"
         phone_number: "電話番号"
         token: "クレジットカード情報"
+    errors:
+      messages:
+        blank: "を入力してください"
 
   errors:
     messages:
-            less_than_or_equal_to: "は9,999,999以下の値にしてください"
+      less_than_or_equal_to: "は9,999,999以下の値にしてください"
