@@ -8,7 +8,8 @@ const initPayjp = () => {
   console.log("form found:", form);
 
   // 公開鍵を使ってPAY.JPのインスタンスを作成（動作確認用に直接記述、後ほど環境変数化する）
-  const payjp = Payjp('pk_test_90c4a3a9baec96a56ea8f7a5');
+  const publicKey = document.querySelector("[data-public-key]").dataset.publicKey;
+  const payjp = Payjp(publicKey);
   const elements = payjp.elements();
 
   // カード情報の入力欄（カード番号・有効期限・セキュリティコード）を生成

@@ -1,7 +1,7 @@
 <%= render "shared/second-header"%>
 <%= javascript_include_tag "https://js.pay.jp/v2/pay.js" %>
 
-<div class='transaction-contents'>
+<div class='transaction-contents' data-public-key="<%= ENV['PAYJP_PUBLIC_KEY'] %>">
   <div class='transaction-main'>
     <h1 class='transaction-title-text'>
       購入内容の確認

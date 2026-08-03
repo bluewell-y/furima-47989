@@ -52,6 +52,7 @@ group :development, :test do
   gem 'faker'
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -84,3 +85,5 @@ gem 'devise'
 gem 'rails-i18n'
 
 gem 'active_hash'
+
+gem 'payjp'
