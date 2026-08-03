@@ -19,7 +19,6 @@ const initPayjp = () => {
 
     payjp.createToken(numberElement).then((response) => {
       if (response.error) {
-        console.log(response.error.message);
         form.submit();
       } else {
         const tokenObj = document.createElement("input");
