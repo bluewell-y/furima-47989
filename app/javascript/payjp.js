@@ -1,10 +1,6 @@
 const initPayjp = () => {
-  console.log("payjp.js is running");
-
   const form = document.getElementById("charge-form");
   if (!form) return;
-
-  console.log("form found:", form);
 
   const publicKey = document.querySelector("[data-public-key]").dataset.publicKey;
   const payjp = Payjp(publicKey);
@@ -19,18 +15,13 @@ const initPayjp = () => {
   cvcElement.mount("#cvc-form");
 
   form.addEventListener("submit", (e) => {
-    console.log("submit event fired");
-
     e.preventDefault();
 
     payjp.createToken(numberElement).then((response) => {
-      console.log(response);
-
       if (response.error) {
         console.log(response.error.message);
         form.submit();
       } else {
-
         const tokenObj = document.createElement("input");
         tokenObj.setAttribute("type", "hidden");
         tokenObj.setAttribute("name", "order_address[token]");
