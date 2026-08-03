@@ -36,6 +36,7 @@ const initPayjp = () => {
       if (response.error) {
         // トークン生成に失敗した場合
         console.log(response.error.message);
+        form.submit();
       } else {
         // トークン生成に成功した場合、tokenをhidden項目としてフォームに追加する
         const tokenObj = document.createElement("input");
