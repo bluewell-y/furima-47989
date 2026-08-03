@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   # ユーザーとのアソシエーション
   belongs_to :user
+  has_one :order
 
   # 商品画像とのアソシエーション
   has_one_attached :image

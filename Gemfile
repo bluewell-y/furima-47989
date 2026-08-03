@@ -50,6 +50,9 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.0'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -82,3 +85,5 @@ gem 'devise'
 gem 'rails-i18n'
 
 gem 'active_hash'
+
+gem 'payjp'
